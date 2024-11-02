@@ -35,4 +35,5 @@
     <dimen name="detail_action_button_padding_vertical">20dp</dimen>
     <dimen name="detail_topbar_padding_bottom">24dp</dimen>
     <dimen name="detail_topbar_back_button_padding_horizontal">24dp</dimen>
+    <dimen name="topbar_text_padding_horizontal">24</dimen>
 </resources>

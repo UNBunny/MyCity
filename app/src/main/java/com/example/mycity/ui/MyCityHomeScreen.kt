@@ -1,6 +1,5 @@
 package com.example.mycity.ui
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,8 +20,6 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import com.example.mycity.R
 import com.example.mycity.data.CategoryType
@@ -51,30 +48,24 @@ fun MyCityHomeScreen(
             categoryType = CategoryType.SHOPPING,
             icon = Icons.Default.ShoppingCart,
             text = stringResource(id = R.string.shopping_category)
-        ),
-        NavigationItemContent(
-            categoryType = CategoryType.HUY,
-            icon = Icons.Default.ShoppingCart,
-            text = stringResource(id = R.string.shopping_category)
         )
     )
 
     if (myCityUiState.isShowingHomepage) {
         MyCityAppContent(
             myCityUiState = myCityUiState,
-            onTabPressed = onCategoryPressed,
+            onCategoryPressed = onCategoryPressed,
             onPlaceCardPressed = onPlaceCardPressed,
             navigationItemContentList = navigationItemContentList,
             modifier = modifier,
         )
     } else {
-        // Uncomment and implement if you have a detail screen
-        // MyCityDetailsScreen(
-        //     myCityUiState = myCityUiState,
-        //     onBackPressed = onDetailScreenBackPressed,
-        //     modifier = modifier,
-        //     isFullScreen = true
-        // )
+         MyCityDetailsScreen(
+             myCityUiState = myCityUiState,
+             onBackPressed = onDetailScreenBackPressed,
+             modifier = modifier,
+             isFullScreen = true
+         )
     }
 }
 
@@ -83,7 +74,7 @@ fun MyCityHomeScreen(
 @Composable
 fun MyCityAppContent(
     myCityUiState: MyCityUiState,
-    onTabPressed: (CategoryType) -> Unit,
+    onCategoryPressed: (CategoryType) -> Unit,
     onPlaceCardPressed: (Place) -> Unit,
     navigationItemContentList: List<NavigationItemContent>,
     modifier: Modifier
@@ -103,8 +94,8 @@ fun MyCityAppContent(
                         .padding()
                 )
                 ReplyBottomNavigationBar(
-                    currentTab = myCityUiState.currentCategory,
-                    onTabPressed = onTabPressed,
+                    currentCategory = myCityUiState.currentCategory,
+                    onCategoryPressed = onCategoryPressed,
                     navigationItemContentList = navigationItemContentList,
                     modifier = Modifier.fillMaxWidth()
                 )
@@ -116,16 +107,16 @@ fun MyCityAppContent(
 
 @Composable
 fun ReplyBottomNavigationBar(
-    currentTab: CategoryType,
-    onTabPressed: (CategoryType) -> Unit,
+    currentCategory: CategoryType,
+    onCategoryPressed: (CategoryType) -> Unit,
     navigationItemContentList: List<NavigationItemContent>,
     modifier: Modifier
 ) {
     NavigationBar(modifier = modifier) {
         for (navItem in navigationItemContentList) {
             NavigationBarItem(
-                selected = currentTab == navItem.categoryType,
-                onClick = { onTabPressed(navItem.categoryType) },
+                selected = currentCategory == navItem.categoryType,
+                onClick = { onCategoryPressed(navItem.categoryType) },
                 icon = {
                     Icon(
                         imageVector = navItem.icon,
