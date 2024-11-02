@@ -1,3 +1,46 @@
 <resources>
     <string name="app_name">MyCity</string>
+    <string name="rest_category">Rest category</string>
+    <string name="nature_category">Nature category</string>
+    <string name="shopping_category">Shopping category</string>
+    <string name="coffee_anytime">Coffee anytime</string>
+    <string name="navigation_bottom">navigation bottom\n</string>
+    <string name="category_parks">parks\n</string>
+    <string name="category_museums">museums\n</string>
+
+    <string name="let30_vlksm_park">30 лет ВЛКСМ</string>
+    <string name="let30_vlksm_park_description">Парк 30 лет влксм описание</string>
+
+    <string name="vokrug_sveta_park">ПАРК ВОКРУГ СВЕТА</string>
+    <string name="vokrug_sveta_park_description">Парк ВОКРУГ СВЕТА описание</string>
+
+    <string name="soviet_park">Советский парк</string>
+    <string name="soviet_park_description">Советский парк описание</string>
+
+    <string name="triumph_shopping">ТЦ ТРИУМФ</string>
+    <string name="triumph_shopping_description">ТЦ триумф описание</string>
+
+    <string name="new_dom_shopping">ТЦ Новый дом</string>
+    <string name="new_dom_shopping_description">ТЦ новый дом описание</string>
+
+    <string name="mega_shopping">Мега</string>
+    <string name="mega_shopping_description">Мега описание</string>
+
+    <string name="shato_restraunt">Ресторан Шато</string>
+    <string name="shato_restraunt_description">Шато описание</string>
+
+    <string name="skuratov_coffee">Кофейня Скуратов</string>
+    <string name="skuratov_coffee_description">Скуратов описание</string>
+
+    <string name="korova_na_bochke_restraunt">Ресторан корова на бочке</string>
+    <string name="korova_na_bochke_restraunt_description">Корова на бочке описание</string>
+
+    <string name="roses_restraunt">Ресторан Розы морозы</string>
+    <string name="roses_restraunt_description">Розы морозы описание</string>
+    <string name="coffee_anytime_description">Кофе Энитайм\n</string>
+    <string name="details_screen">DETAILS SCREEN\n</string>
+    <string name="navigation_back">nav back</string>
+    <string name="build_route">Построить маршрут\n</string>
+    <string name="omsk_logo_description">omsk logo\n</string>
+
 </resources>
