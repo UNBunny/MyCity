@@ -1,10 +1,9 @@
 package com.example.mycity.ui
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.example.mycity.data.Place
 import com.example.mycity.data.CategoryType
 import com.example.mycity.data.LocalPlacesDataProvider
+import com.example.mycity.data.Place
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
@@ -23,12 +22,11 @@ class MyCityViewModel : ViewModel() {
             LocalPlacesDataProvider.allPlaces.groupBy { it.type }
         _uiState.value = MyCityUiState(
             categorizedPlaces = categorizedPlaces,
-            currentSelectedPlace = categorizedPlaces[CategoryType.NATURE]?.firstOrNull()
+            currentSelectedPlace = categorizedPlaces[CategoryType.REST]?.firstOrNull()
                 ?: LocalPlacesDataProvider.allPlaces.firstOrNull()
                 ?: LocalPlacesDataProvider.defaultPlace
         )
     }
-
     fun updateDetailsScreenState(place: Place) {
         _uiState.update {
             it.copy(
@@ -37,7 +35,6 @@ class MyCityViewModel : ViewModel() {
             )
         }
     }
-
     fun resetHomeScreenState() {
         _uiState.update {
             it.copy(
@@ -47,7 +44,6 @@ class MyCityViewModel : ViewModel() {
             )
         }
     }
-
     fun updateCurrentCategory(categoryType: CategoryType) {
         _uiState.update {
             it.copy(

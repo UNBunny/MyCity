@@ -1,5 +1,6 @@
 package com.example.mycity.ui
 
+import android.app.Activity
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -13,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
@@ -25,6 +27,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -32,6 +35,44 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.mycity.R
 import com.example.mycity.data.Place
+
+
+@Composable
+fun MyCityListAndDetailContent(
+    myCityUiState: MyCityUiState,
+    onPlaceCardPressed: (Place) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val places = myCityUiState.currentCategoryPlaces
+    Row(modifier = modifier, horizontalArrangement = Arrangement.SpaceEvenly) {
+        LazyColumn(
+            contentPadding = WindowInsets.statusBars.asPaddingValues(),
+            modifier = Modifier
+                .weight(1f)
+                .padding(horizontal = dimensionResource(R.dimen.place_list_only_horizontal_padding)),
+            verticalArrangement = Arrangement.spacedBy(
+                dimensionResource(R.dimen.place_list_item_vertical_spacing)
+            )
+        ) {
+            items(places, key = { place -> place.id }) { place ->
+                MyCityPlaceListItem(
+                    place = place,
+                    selected = myCityUiState.currentSelectedPlace.id == place.id,
+                    onCardClick = { onPlaceCardPressed(place) }
+                )
+            }
+
+        }
+        val activity = LocalContext.current as Activity
+        MyCityDetailsScreen(
+            myCityUiState = myCityUiState,
+            onBackPressed = { activity.finish() },
+            modifier = Modifier
+                .weight(1f)
+                .padding(end = dimensionResource(R.dimen.place_list_only_horizontal_padding)),
+        )
+    }
+}
 
 @Composable
 fun MyCityListOnlyContent(
@@ -58,6 +99,7 @@ fun MyCityListOnlyContent(
         items(places, key = { place -> place.id }) { place ->
             MyCityPlaceListItem(
                 place = place,
+                selected = false,
                 onCardClick = { onPlaceCardPressed(place) }
             )
         }
@@ -68,6 +110,7 @@ fun MyCityListOnlyContent(
 @Composable
 fun MyCityPlaceListItem(
     place: Place,
+    selected: Boolean,
     onCardClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -75,7 +118,11 @@ fun MyCityPlaceListItem(
         modifier = modifier
             .padding(horizontal = dimensionResource(R.dimen.place_list_only_horizontal_padding)), // Добавление отступа
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.secondaryContainer
+            containerColor = if (selected) {
+                MaterialTheme.colorScheme.primaryContainer
+            } else {
+                MaterialTheme.colorScheme.secondaryContainer
+            }
         ),
         onClick = onCardClick
     ) {

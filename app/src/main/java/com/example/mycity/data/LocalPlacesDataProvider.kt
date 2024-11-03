@@ -5,22 +5,15 @@ import com.example.mycity.R
 object LocalPlacesDataProvider {
 
     val defaultPlace = Place(
-        1L,
+        2L,
         R.string.soviet_park,
         R.string.soviet_park_description,
         R.drawable.soviet_park,
         CategoryType.NATURE
-    )
-
+        )
     val allPlaces = listOf(
         defaultPlace,
-        Place(
-            2L,
-            R.string.vokrug_sveta_park,
-            R.string.vokrug_sveta_park_description,
-            R.drawable.vokrug_sveta_park,
-            CategoryType.NATURE
-        ),
+
         Place(
             3L,
             R.string.let30_vlksm_park,
@@ -31,13 +24,13 @@ object LocalPlacesDataProvider {
 
         Place(
             4L,
-            R.string.roses_restraunt,
-            R.string.roses_restraunt_description,
-            R.drawable.roses_restraunt,
-            CategoryType.REST
+            R.string.vokrug_sveta_park,
+            R.string.vokrug_sveta_park_description,
+            R.drawable.vokrug_sveta_park,
+            CategoryType.NATURE
         ),
         Place(
-            5L,
+            1L,
             R.string.coffee_anytime,
             R.string.coffee_anytime_description,
             R.drawable.anytime_coffee,

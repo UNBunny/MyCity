@@ -27,7 +27,7 @@
     <string name="mega_shopping_description">Мега описание</string>
 
     <string name="shato_restraunt">Ресторан Шато</string>
-    <string name="shato_restraunt_description">Шато описание</string>
+    <string name="shato_restraunt_description">Поэтому для гостей «Шато» делаем всё с особенным внимание и чувством, чтобы открывая своё сердце и двери нашего ресторана вы попадали в мир, где царит радушная атмосфера, где перед вами расстилаются скатерти и бескрайние горизонты гастрономических экспериментов, где для праздника не нужен календарь, для звона бокалов повод, а желания гостей угадываются с полуслова.Поэтому для гостей «Шато» делаем всё с особенным внимание и чувством, чтобы открывая своё сердце и двери нашего ресторана вы попадали в мир, где царит радушная атмосфера, где перед вами расстилаются скатерти и бескрайние горизонты гастрономических экспериментов, где для праздника не нужен календарь, для звона бокалов повод, а желания гостей угадываются с полуслова.</string>
 
     <string name="skuratov_coffee">Кофейня Скуратов</string>
     <string name="skuratov_coffee_description">Скуратов описание</string>
@@ -42,5 +42,7 @@
     <string name="navigation_back">nav back</string>
     <string name="build_route">Построить маршрут\n</string>
     <string name="omsk_logo_description">omsk logo\n</string>
+    <string name="navigation_drawer">nav drawer</string>
+    <string name="navigation_rail">nav rail</string>
 
 </resources>

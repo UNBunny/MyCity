@@ -2,7 +2,6 @@ package com.example.mycity.ui
 
 import android.content.Intent
 import android.net.Uri
-import android.widget.Toast
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -78,7 +77,7 @@ fun MyCityDetailsScreen(
                             )
                     )
                 }
-                ReplyEmailDetailsCard(
+                MyCityPlaceDetailsCard(
                     place = myCityUiState.currentSelectedPlace,
                     categoryType = myCityUiState.currentCategory,
                     isFullScreen = isFullScreen,
@@ -128,17 +127,15 @@ private fun ReplyDetailsScreenTopBar(
         }
     }
 }
+
 @Composable
-private fun ReplyEmailDetailsCard(
+private fun MyCityPlaceDetailsCard(
     place: Place,
     categoryType: CategoryType,
     modifier: Modifier = Modifier,
     isFullScreen: Boolean = false
 ) {
     val context = LocalContext.current
-    val displayToast = { text: String ->
-        Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
-    }
 
     Card(
         modifier = modifier,
@@ -158,7 +155,6 @@ private fun ReplyEmailDetailsCard(
                     .height(256.dp)
             )
 
-            // Description below the image
             Text(
                 text = stringResource(place.description),
                 style = MaterialTheme.typography.bodyLarge,
@@ -178,7 +174,8 @@ private fun ReplyEmailDetailsCard(
                 },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = dimensionResource(R.dimen.topbar_profile_image_size)),
+                    .padding(top = dimensionResource(R.dimen.topbar_profile_image_size))
+                    .align(Alignment.CenterHorizontally),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = MaterialTheme.colorScheme.primary
                 )
@@ -188,71 +185,6 @@ private fun ReplyEmailDetailsCard(
         }
     }
 }
-
-//
-//@Composable
-//private fun DetailsScreenButtonBar(
-//    categoryType: CategoryType,
-//    displayToast: (String) -> Unit,
-//    modifier: Modifier = Modifier
-//) {
-//    Box(modifier = modifier) {
-//        when (categoryType) {
-//            CategoryType.REST ->
-//                ActionButton(
-//                    text = stringResource(id = R.string.continue_composing),
-//                    onButtonClicked = displayToast
-//                )
-//
-//            CategoryType.NATURE ->
-//                Row(
-//                    modifier = Modifier
-//                        .fillMaxWidth()
-//                        .padding(
-//                            vertical = dimensionResource(R.dimen.detail_button_bar_padding_vertical)
-//                        ),
-//                    horizontalArrangement = Arrangement.spacedBy(
-//                        dimensionResource(R.dimen.detail_button_bar_item_spacing)
-//                    ),
-//                ) {
-//                    ActionButton(
-//                        text = stringResource(id = R.string.move_to_inbox),
-//                        onButtonClicked = displayToast,
-//                        modifier = Modifier.weight(1f)
-//                    )
-//                    ActionButton(
-//                        text = stringResource(id = R.string.delete),
-//                        onButtonClicked = displayToast,
-//                        containIrreversibleAction = true,
-//                        modifier = Modifier.weight(1f)
-//                    )
-//                }
-//
-//            MailboxType.Sent, MailboxType.Inbox ->
-//                Row(
-//                    modifier = Modifier
-//                        .fillMaxWidth()
-//                        .padding(
-//                            vertical = dimensionResource(R.dimen.detail_button_bar_padding_vertical)
-//                        ),
-//                    horizontalArrangement = Arrangement.spacedBy(
-//                        dimensionResource(R.dimen.detail_button_bar_item_spacing)
-//                    ),
-//                ) {
-//                    ActionButton(
-//                        text = stringResource(id = R.string.reply),
-//                        onButtonClicked = displayToast,
-//                        modifier = Modifier.weight(1f)
-//                    )
-//                    ActionButton(
-//                        text = stringResource(id = R.string.reply_all),
-//                        onButtonClicked = displayToast,
-//                        modifier = Modifier.weight(1f)
-//                    )
-//                }
-//        }
-//    }
-//}
 
 fun generateRandomCoordinates(): Pair<Double, Double> {
     val latitude = Random.nextDouble(-90.0, 90.0) // Random latitude between -90 and 90
